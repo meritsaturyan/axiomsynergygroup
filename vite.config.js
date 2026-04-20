@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+// Production: GitHub Pages serves at https://<user>.github.io/<repo>/
+// Dev: keep "/" so http://localhost:5173/ works without a subpath
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  // GitHub Pages: https://<user>.github.io/<repo>/
-  base: '/axiomsynergygroup/',
-})
+  base: command === 'build' ? '/axiomsynergygroup/' : '/',
+}))

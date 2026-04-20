@@ -1,0 +1,301 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #050505;
+  color: #e8e8e8;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #c9a227;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 5, 5, 0.92);
+  border-bottom: 1px solid #222;
+  backdrop-filter: blur(10px);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo {
+  height: 96px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .brand-logo {
+    height: 72px;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  justify-content: center;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.35rem 0;
+  font-family: inherit;
+}
+
+.nav-link:hover {
+  color: #c9a227;
+}
+
+button:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid #c9a227;
+  outline-offset: 3px;
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.25rem 0.35rem;
+  font-family: inherit;
+}
+
+.lang-btn.active {
+  color: #c9a227;
+  font-weight: 600;
+}
+
+.lang-sep {
+  color: #444;
+  user-select: none;
+}
+
+/* Hero */
+.hero {
+  background: #000;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+.hero-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+.hero-copy {
+  padding-top: 0.5rem;
+}
+
+.hero-title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fafafa;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #a8a8a8;
+  max-width: 36ch;
+}
+
+.model-wrap {
+  width: 100%;
+}
+
+.model-caption {
+  margin: 0 0 0.65rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.sketchfab-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: #0d0d0d;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+}
+
+.sketchfab-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.sketchfab-credit {
+  margin: 0.65rem 0 0;
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.sketchfab-credit a {
+  color: #8a7a4a;
+}
+
+/* Sections */
+.section {
+  padding: 3rem 1.25rem;
+  background: #050505;
+}
+
+.section-alt {
+  background: #0a0a0a;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-inner.narrow {
+  max-width: 720px;
+}
+
+.section-title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  color: #f0f0f0;
+  font-weight: 600;
+}
+
+.section-text {
+  margin: 0;
+  color: #b5b5b5;
+  font-size: 1.05rem;
+}
+
+.building-section {
+  padding-top: 2rem;
+}
+
+.building-figure {
+  margin: 0;
+}
+
+.building-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid #222;
+}
+
+.building-caption {
+  margin-top: 0.85rem;
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+}
+
+.contact-section {
+  padding-bottom: 4rem;
+}
+
+.contact-placeholder {
+  margin: 1.25rem 0 0;
+  font-size: 1rem;
+}
+
+.muted {
+  color: #777;
+}
+
+/* Footer */
+.footer {
+  margin-top: auto;
+  padding: 2rem 1.25rem;
+  border-top: 1px solid #1a1a1a;
+  text-align: center;
+  background: #020202;
+}
+
+.footer-logo {
+  height: 80px;
+  width: auto;
+  opacity: 0.85;
+  margin-bottom: 0.75rem;
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #555;
+}

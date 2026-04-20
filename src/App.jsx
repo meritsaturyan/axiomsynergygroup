@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { translations } from './translations'
 
+const publicUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 const SKETCHFAB_EMBED =
   'https://sketchfab.com/models/7d81ec464bf1455aacfc9a19bca9f297/embed?autostart=1&ui_controls=1&ui_infos=0&ui_inspector=0&ui_watermark=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=1&ui_stop=0&scrollwheel=1&transparent=0&ui_animations=0&ui_hint=0&dnt=1'
 
@@ -28,7 +30,7 @@ function App() {
       <header className="header">
         <div className="header-inner">
           <button type="button" className="brand" onClick={() => scrollTo('hero')} aria-label="Home">
-            <img src="/axiomlogo.PNG" alt="Axiom Synergy Group" className="brand-logo" />
+            <img src={publicUrl('axiomlogo.PNG')} alt="Axiom Synergy Group" className="brand-logo" />
           </button>
           <nav className="nav" aria-label="Main">
             <button type="button" className="nav-link" onClick={() => scrollTo('about')}>
@@ -101,7 +103,7 @@ function App() {
         <section id="about" className="section building-section">
           <div className="section-inner">
             <figure className="building-figure">
-              <img src="/axiomshenq.PNG" alt="" className="building-img" />
+              <img src={publicUrl('axiomshenq.PNG')} alt="" className="building-img" />
               <figcaption className="building-caption">{t.buildingCaption}</figcaption>
             </figure>
           </div>
@@ -134,7 +136,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <img src="/axiomlogo.PNG" alt="" className="footer-logo" />
+        <img src={publicUrl('axiomlogo.PNG')} alt="" className="footer-logo" />
         <p className="footer-copy">{t.footerRights}</p>
       </footer>
     </div>

@@ -13,16 +13,39 @@ function App() {
     if (typeof window === 'undefined') return 'hy'
     return localStorage.getItem(LANG_KEY) || 'hy'
   })
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     localStorage.setItem(LANG_KEY, lang)
     document.documentElement.lang = lang === 'hy' ? 'hy' : 'en'
   }, [lang])
 
+  useEffect(() => {
+    if (!menuOpen) return
+    document.body.style.overflow = 'hidden'
+    const onKey = (e) => {
+      if (e.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [menuOpen])
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.matchMedia('(min-width: 768px)').matches) setMenuOpen(false)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
   const t = useMemo(() => translations[lang], [lang])
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setMenuOpen(false)
   }
 
   return (
@@ -32,7 +55,11 @@ function App() {
           <button type="button" className="brand" onClick={() => scrollTo('hero')} aria-label="Home">
             <img src={publicUrl('axiomlogo.PNG')} alt="Axiom Synergy Group" className="brand-logo" />
           </button>
-          <nav className="nav" aria-label="Main">
+          <nav
+            className={`nav ${menuOpen ? 'nav--open' : ''}`}
+            id="site-nav"
+            aria-label="Main"
+          >
             <button type="button" className="nav-link" onClick={() => scrollTo('about')}>
               {t.navAbout}
             </button>
@@ -46,26 +73,48 @@ function App() {
               {t.navContact}
             </button>
           </nav>
-          <div className="lang" role="group" aria-label="Language">
+          <div className="header-trailing">
+            <div className="lang" role="group" aria-label="Language">
+              <button
+                type="button"
+                className={`lang-btn ${lang === 'hy' ? 'active' : ''}`}
+                onClick={() => setLang('hy')}
+              >
+                {t.langHy}
+              </button>
+              <span className="lang-sep" aria-hidden>
+                |
+              </span>
+              <button
+                type="button"
+                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+                onClick={() => setLang('en')}
+              >
+                {t.langEn}
+              </button>
+            </div>
             <button
               type="button"
-              className={`lang-btn ${lang === 'hy' ? 'active' : ''}`}
-              onClick={() => setLang('hy')}
+              className="menu-toggle"
+              aria-expanded={menuOpen}
+              aria-controls="site-nav"
+              aria-label={menuOpen ? t.menuClose : t.menuOpen}
+              onClick={() => setMenuOpen((o) => !o)}
             >
-              {t.langHy}
-            </button>
-            <span className="lang-sep" aria-hidden>
-              |
-            </span>
-            <button
-              type="button"
-              className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-              onClick={() => setLang('en')}
-            >
-              {t.langEn}
+              <span className={`menu-icon ${menuOpen ? 'menu-icon--open' : ''}`} aria-hidden>
+                <span className="menu-icon-bar" />
+                <span className="menu-icon-bar" />
+                <span className="menu-icon-bar" />
+              </span>
             </button>
           </div>
         </div>
+        <button
+          type="button"
+          className={`nav-backdrop ${menuOpen ? 'nav-backdrop--visible' : ''}`}
+          aria-hidden={!menuOpen}
+          onClick={() => setMenuOpen(false)}
+        />
       </header>
 
       <main>

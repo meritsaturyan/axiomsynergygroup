@@ -20,6 +20,8 @@ export const translations = {
     emailLabel: 'Էլ․ փոստ',
     langHy: 'Հայերեն',
     langEn: 'English',
+    menuOpen: 'Բացել մենյու',
+    menuClose: 'Փակել մենյու',
     footerRights: 'Բոլոր իրավունքները պաշտպանված են։',
   },
   en: {
@@ -43,6 +45,8 @@ export const translations = {
     emailLabel: 'Email',
     langHy: 'Հայերեն',
     langEn: 'English',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
     footerRights: 'All rights reserved.',
   },
 }

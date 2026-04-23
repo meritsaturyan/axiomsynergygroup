@@ -1,10 +1,12 @@
-import { useEffect, useMemo, useState } from 'react'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 import { translations } from './translations'
 
 const publicUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
+const HydraModelViewer = lazy(() => import('./HydraModelViewer.jsx'))
+
 const SKETCHFAB_EMBED =
-  'https://sketchfab.com/models/7d81ec464bf1455aacfc9a19bca9f297/embed?autostart=1&ui_controls=1&ui_infos=0&ui_inspector=0&ui_watermark=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=1&ui_stop=0&scrollwheel=1&transparent=0&ui_animations=0&ui_hint=0&dnt=1'
+  'https://sketchfab.com/models/7d81ec464bf1455aacfc9a19bca9f297/embed?autostart=1&ui_controls=1&ui_inspector=0&ui_watermark=0&ui_watermark_link=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=1&ui_stop=0&scrollwheel=1&transparent=0&ui_animations=0&ui_hint=0&dnt=1&ui_header=0&ui_infos=0'
 
 const LANG_KEY = 'axiom-lang'
 
@@ -63,6 +65,9 @@ function App() {
             <button type="button" className="nav-link" onClick={() => scrollTo('about')}>
               {t.navAbout}
             </button>
+            <button type="button" className="nav-link" onClick={() => scrollTo('workshop')}>
+              {t.navWorkshop}
+            </button>
             <button type="button" className="nav-link" onClick={() => scrollTo('solar')}>
               {t.navSolar}
             </button>
@@ -119,12 +124,53 @@ function App() {
 
       <main>
         <section id="hero" className="hero">
-          <div className="hero-grid">
+          <div className="hero-inner">
             <div className="hero-copy">
               <h1 className="hero-title">{t.heroTitle}</h1>
               <p className="hero-subtitle">{t.heroSubtitle}</p>
             </div>
-            <div className="model-wrap">
+          </div>
+        </section>
+
+        <section id="about" className="section building-section">
+          <div className="section-inner narrow">
+            <h2 className="section-title building-title">{t.buildingTitle}</h2>
+            <p className="building-address">{t.buildingAddress}</p>
+            <figure className="building-figure">
+              <img
+                src={publicUrl('1776184211349.png')}
+                alt={t.buildingImageAlt}
+                className="building-img"
+              />
+            </figure>
+            <p className="section-text building-text">{t.buildingFunctions}</p>
+            <p className="section-text building-text">{t.buildingHq}</p>
+          </div>
+        </section>
+
+        <section id="workshop" className="section section-alt">
+          <div className="section-inner narrow">
+            <h2 className="section-title">{t.workshopSalesTitle}</h2>
+            <p className="section-text building-text">{t.workshopDirectSales}</p>
+            <h3 className="section-subtitle">{t.workshopFacilityTitle}</h3>
+            <p className="building-address">{t.workshopAddress}</p>
+            <figure className="building-figure">
+              <img
+                src={publicUrl('1776184547037-2.png')}
+                alt={t.workshopImageAlt}
+                className="building-img"
+              />
+            </figure>
+            <p className="section-text building-text">{t.workshopFunctions}</p>
+            <p className="section-text building-text">{t.workshopShowroom}</p>
+            <p className="section-text building-text">{t.workshopConsult}</p>
+          </div>
+        </section>
+
+        <section id="solar" className="section solar-section">
+          <div className="section-inner narrow">
+            <h2 className="section-title">{t.solarTitle}</h2>
+            <div className="model-wrap solar-model-wrap">
               <p className="model-caption">{t.modelCaption}</p>
               <div className="sketchfab-embed">
                 <iframe
@@ -134,6 +180,7 @@ function App() {
                   allowFullScreen
                   loading="lazy"
                 />
+                <div className="sketchfab-ui-mask" aria-hidden />
               </div>
               <p className="sketchfab-credit">
                 <a
@@ -146,29 +193,24 @@ function App() {
                 {' — Sketchfab (shrednector)'}
               </p>
             </div>
-          </div>
-        </section>
-
-        <section id="about" className="section building-section">
-          <div className="section-inner">
-            <figure className="building-figure">
-              <img src={publicUrl('axiomshenq.PNG')} alt="" className="building-img" />
-              <figcaption className="building-caption">{t.buildingCaption}</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section id="solar" className="section">
-          <div className="section-inner narrow">
-            <h2 className="section-title">{t.solarTitle}</h2>
-            <p className="section-text">{t.solarText}</p>
+            <p className="section-text solar-section-text">{t.solarText}</p>
           </div>
         </section>
 
         <section id="hydra" className="section section-alt">
           <div className="section-inner narrow">
             <h2 className="section-title">{t.hydraTitle}</h2>
-            <p className="section-text">{t.hydraText}</p>
+            <p className="model-caption hydra-model-caption">{t.hydraModelCaption}</p>
+            <Suspense
+              fallback={
+                <div className="hydra-model-viewer-wrap">
+                  <div className="hydra-model-placeholder" aria-hidden />
+                </div>
+              }
+            >
+              <HydraModelViewer src={publicUrl('hydra-logic.glb')} alt={t.hydraModelAlt} />
+            </Suspense>
+            <p className="section-text hydra-section-text">{t.hydraText}</p>
           </div>
         </section>
 

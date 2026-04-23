@@ -2,3 +2,7 @@ node_modules
 dist
 .DS_Store
 *.log
+
+# Large legacy GLB (use public/hydra-logic.glb)
+modelToUsed.glb
+public/modelToUsed.glb

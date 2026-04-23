@@ -200,16 +200,18 @@ function App() {
         <section id="hydra" className="section section-alt">
           <div className="section-inner narrow">
             <h2 className="section-title">{t.hydraTitle}</h2>
-            <p className="model-caption hydra-model-caption">{t.hydraModelCaption}</p>
-            <Suspense
-              fallback={
-                <div className="hydra3d-stage">
-                  <div className="hydra3d-placeholder" aria-hidden />
-                </div>
-              }
-            >
-              <HydraModelViewer src={publicUrl('hydra-logic.glb')} alt={t.hydraModelAlt} />
-            </Suspense>
+            <div className="model-wrap hydra-model-wrap">
+              <p className="model-caption">{t.hydraModelCaption}</p>
+              <Suspense
+                fallback={
+                  <div className="hydra3d-stage">
+                    <div className="hydra3d-placeholder" aria-hidden />
+                  </div>
+                }
+              >
+                <HydraModelViewer src={publicUrl('hydra-logic.glb')} alt={t.hydraModelAlt} />
+              </Suspense>
+            </div>
             <p className="section-text hydra-section-text">{t.hydraText}</p>
           </div>
         </section>

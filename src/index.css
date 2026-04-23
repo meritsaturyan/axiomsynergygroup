@@ -377,18 +377,17 @@ button:focus-visible,
 .hydra3d-stage {
   position: relative;
   width: 100%;
-  height: clamp(340px, 48vw, 520px);
-  border-radius: 14px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
   border: 1px solid #2a2a2a;
   background: #0d0d0d;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
 }
 
 @media (max-width: 767px) {
   .hydra3d-stage {
-    height: clamp(280px, 70vw, 380px);
-    border-radius: 12px;
+    border-radius: 10px;
   }
 }
 

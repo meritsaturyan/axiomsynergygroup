@@ -394,14 +394,10 @@ button:focus-visible,
 }
 
 .hydra-model-viewer {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 118%;
-  height: 118%;
-  max-width: none;
-  transform: translate(-50%, -50%);
-  transform-origin: center center;
+  display: block;
+  width: 100%;
+  height: 100%;
+  --poster-color: transparent;
 }
 
 .hydra-model-placeholder {

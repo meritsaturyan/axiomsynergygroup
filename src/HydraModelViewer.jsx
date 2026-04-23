@@ -26,26 +26,32 @@ function HydraModelViewer({ src, alt }) {
     const el = mvRef.current
     if (!el || !loadModel) return
 
-    const frameCamera = () => {
-      el.setAttribute('bounds', 'tight')
-      el.setAttribute('camera-target', 'auto auto auto')
-      el.setAttribute('camera-orbit', '0deg 90deg auto')
-      el.setAttribute('field-of-view', 'auto')
-      el.setAttribute('min-field-of-view', '10deg')
-      el.setAttribute('max-field-of-view', '45deg')
-      if (typeof el.updateFraming === 'function') el.updateFraming()
-      if (typeof el.resetTurntableRotation === 'function') el.resetTurntableRotation()
-      if (typeof el.jumpCameraToGoal === 'function') el.jumpCameraToGoal()
+    const reframe = () => {
+      try {
+        el.setAttribute('bounds', 'tight')
+        el.setAttribute('camera-target', 'auto auto auto')
+        el.setAttribute('camera-orbit', '0deg 90deg auto')
+        el.setAttribute('field-of-view', 'auto')
+        if (typeof el.updateFraming === 'function') el.updateFraming()
+        if (typeof el.jumpCameraToGoal === 'function') el.jumpCameraToGoal()
+      } catch {}
     }
 
-    const onLoad = () => frameCamera()
+    const onLoad = () => reframe()
     el.addEventListener('load', onLoad)
-    if (el.loaded) frameCamera()
-    return () => el.removeEventListener('load', onLoad)
+    if (el.loaded) reframe()
+
+    const ro = new ResizeObserver(() => reframe())
+    if (wrapRef.current) ro.observe(wrapRef.current)
+
+    return () => {
+      el.removeEventListener('load', onLoad)
+      ro.disconnect()
+    }
   }, [loadModel, src])
 
   return (
-    <div ref={wrapRef} className="hydra-model-viewer-wrap">
+    <div ref={wrapRef} className="hydra3d-stage">
       {loadModel ? (
         <model-viewer
           ref={mvRef}
@@ -63,10 +69,12 @@ function HydraModelViewer({ src, alt }) {
           field-of-view="auto"
           camera-orbit="0deg 90deg auto"
           camera-target="auto auto auto"
-          className="hydra-model-viewer"
+          min-field-of-view="10deg"
+          max-field-of-view="45deg"
+          className="hydra3d-viewer"
         />
       ) : (
-        <div className="hydra-model-placeholder" aria-hidden />
+        <div className="hydra3d-placeholder" aria-hidden />
       )}
     </div>
   )

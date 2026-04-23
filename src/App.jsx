@@ -203,8 +203,8 @@ function App() {
             <p className="model-caption hydra-model-caption">{t.hydraModelCaption}</p>
             <Suspense
               fallback={
-                <div className="hydra-model-viewer-wrap">
-                  <div className="hydra-model-placeholder" aria-hidden />
+                <div className="hydra3d-stage">
+                  <div className="hydra3d-placeholder" aria-hidden />
                 </div>
               }
             >

@@ -378,6 +378,7 @@ button:focus-visible,
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+  min-height: clamp(260px, 42vw, 440px);
   border-radius: 12px;
   border: 1px solid #2a2a2a;
   background: #0d0d0d;
@@ -388,13 +389,19 @@ button:focus-visible,
 @media (max-width: 767px) {
   .hydra-model-viewer-wrap {
     border-radius: 10px;
+    min-height: clamp(220px, 56vw, 320px);
   }
 }
 
 .hydra-model-viewer {
-  display: block;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 118%;
+  height: 118%;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
 }
 
 .hydra-model-placeholder {

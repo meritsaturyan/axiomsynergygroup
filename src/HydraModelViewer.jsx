@@ -3,6 +3,7 @@ import '@google/model-viewer'
 
 function HydraModelViewer({ src, alt }) {
   const wrapRef = useRef(null)
+  const mvRef = useRef(null)
   const [loadModel, setLoadModel] = useState(false)
 
   useEffect(() => {
@@ -21,10 +22,27 @@ function HydraModelViewer({ src, alt }) {
     return () => io.disconnect()
   }, [])
 
+  useEffect(() => {
+    const el = mvRef.current
+    if (!el || !loadModel) return
+
+    const frameCamera = () => {
+      el.setAttribute('camera-target', 'auto')
+      el.setAttribute('field-of-view', '28deg')
+      el.setAttribute('camera-orbit', '0deg 82deg 52%')
+    }
+
+    const onLoad = () => frameCamera()
+    el.addEventListener('load', onLoad)
+    if (el.loaded) frameCamera()
+    return () => el.removeEventListener('load', onLoad)
+  }, [loadModel, src])
+
   return (
     <div ref={wrapRef} className="hydra-model-viewer-wrap">
       {loadModel ? (
         <model-viewer
+          ref={mvRef}
           src={src}
           alt={alt}
           camera-controls

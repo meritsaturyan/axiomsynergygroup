@@ -3,7 +3,7 @@ import { translations } from './translations'
 
 const publicUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
-const HydraModelViewer = lazy(() => import('./HydraModelViewer.jsx'))
+const HydraScene = lazy(() => import('./HydraScene.jsx'))
 
 const SKETCHFAB_EMBED =
   'https://sketchfab.com/models/7d81ec464bf1455aacfc9a19bca9f297/embed?autostart=1&ui_controls=1&ui_inspector=0&ui_watermark=0&ui_watermark_link=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=1&ui_stop=0&scrollwheel=1&transparent=0&ui_animations=0&ui_hint=0&dnt=1&ui_header=0&ui_infos=0'
@@ -200,17 +200,13 @@ function App() {
         <section id="hydra" className="section section-alt">
           <div className="section-inner narrow">
             <h2 className="section-title">{t.hydraTitle}</h2>
-            <div className="model-wrap hydra-model-wrap">
+            <div className="model-wrap">
               <p className="model-caption">{t.hydraModelCaption}</p>
-              <Suspense
-                fallback={
-                  <div className="hydra3d-stage">
-                    <div className="hydra3d-placeholder" aria-hidden />
-                  </div>
-                }
-              >
-                <HydraModelViewer src={publicUrl('hydra-logic.glb')} alt={t.hydraModelAlt} />
-              </Suspense>
+              <div className="hydra-stage" aria-label={t.hydraModelAlt}>
+                <Suspense fallback={<div className="hydra-stage__loader" aria-hidden />}>
+                  <HydraScene src={publicUrl('hydra-logic.glb')} />
+                </Suspense>
+              </div>
             </div>
             <p className="section-text hydra-section-text">{t.hydraText}</p>
           </div>

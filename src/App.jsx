@@ -4,6 +4,7 @@ import { translations } from './translations'
 const publicUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
 const HydraScene = lazy(() => import('./HydraScene.jsx'))
+const ChatBot = lazy(() => import('./ChatBot.jsx'))
 
 const SKETCHFAB_EMBED =
   'https://sketchfab.com/models/7d81ec464bf1455aacfc9a19bca9f297/embed?autostart=1&ui_controls=1&ui_inspector=0&ui_watermark=0&ui_watermark_link=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=1&ui_stop=0&scrollwheel=1&transparent=0&ui_animations=0&ui_hint=0&dnt=1&ui_header=0&ui_infos=0'
@@ -294,6 +295,10 @@ function App() {
         </ul>
         <p className="footer-copy">{t.footerRights}</p>
       </footer>
+
+      <Suspense fallback={null}>
+        <ChatBot t={t} lang={lang} />
+      </Suspense>
     </div>
   )
 }

@@ -43,6 +43,38 @@ export const translations = {
     menuOpen: 'Բացել մենյու',
     menuClose: 'Փակել մենյու',
     footerRights: 'Բոլոր իրավունքները պաշտպանված են։',
+    chatTitle: 'Axiom օգնական',
+    chatSubtitle: 'Ավտոմատ պատասխաններ ձեր հարցերին',
+    chatOpenLabel: 'Բացել չաթը',
+    chatCloseLabel: 'Փակել չաթը',
+    chatInputPlaceholder: 'Գրեք ձեր հարցը…',
+    chatSend: 'Ուղարկել',
+    chatGreeting:
+      'Բարև 👋 Ես Axiom Synergy Group-ի վիրտուալ օգնականն եմ։ Ինչո՞վ կարող եմ օգնել։ Ընտրեք թեման կամ գրեք ձեր հարցը։',
+    chatNoMatch:
+      'Ներեցեք, ես դեռ չեմ կարող պատասխանել այդ հարցին։ Խնդրում եմ գրել մեզ՝ axiomsynergygroup@gmail.com կամ +374 77 684 594։',
+    chatSuggestionsTitle: 'Հաճախակի հարցեր',
+    chatSuggestionAbout: 'Ի՞նչ է Axiom Synergy Group-ը',
+    chatSuggestionSolar: 'Արևային վահանակներ',
+    chatSuggestionHydra: 'Hydra Logic',
+    chatSuggestionLocation: 'Որտեղ եք գտնվում',
+    chatSuggestionContact: 'Ինչպես կապվել',
+    chatSuggestionPrice: 'Գնի վերաբերյալ',
+    chatSuggestionWarranty: 'Երաշխիք',
+    chatAnswerAbout:
+      'Axiom Synergy Group-ը հայկական ընկերություն է, որը մատակարարում է արևային էներգիայի համակարգեր և Hydra Logic հիդրավլիկ/ավտոմատացման լուծումներ B2B և B2G հատվածներին։',
+    chatAnswerSolar:
+      'Մենք նախագծում, մատակարարում և տեղադրում ենք արևային վահանակների համակարգեր՝ տանիքային և գետնի վրա, ներառյալ մոնիտորինգը և սպասարկումը։',
+    chatAnswerHydra:
+      'Hydra Logic-ը մեր հարթակն է հիդրավլիկ և ջրային համակարգերի կառավարման համար՝ սենսորներով, ավտոմատացմամբ և տվյալների անալիտիկայով։',
+    chatAnswerLocation:
+      'Գրասենյակ՝ Երևան, Հյուսիսային պողոտա 1։ Արտադրամաս՝ Աբովյան, Արդյունաբերական գոտի, 2-րդ փողոց։',
+    chatAnswerContact:
+      'Կապվեք մեզ հետ՝ 📧 axiomsynergygroup@gmail.com ☎️ +374 77 684 594 📸 instagram.com/axiom_synergy',
+    chatAnswerPrice:
+      'Գները կախված են նախագծի ծավալից։ Խնդրում ենք ուղարկել ձեր պահանջները էլ․ փոստով՝ axiomsynergygroup@gmail.com, և մենք կպատրաստենք անհատական առաջարկ։',
+    chatAnswerWarranty:
+      'Մեր սարքավորումները գալիս են արտադրողի երաշխիքով, իսկ տեղադրման աշխատանքները՝ Axiom-ի ծառայության երաշխիքով։ Մանրամասների համար դիմեք մեզ։',
   },
   en: {
     navAbout: 'About',
@@ -88,5 +120,37 @@ export const translations = {
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     footerRights: 'All rights reserved.',
+    chatTitle: 'Axiom Assistant',
+    chatSubtitle: 'Automated answers to your questions',
+    chatOpenLabel: 'Open chat',
+    chatCloseLabel: 'Close chat',
+    chatInputPlaceholder: 'Type your question…',
+    chatSend: 'Send',
+    chatGreeting:
+      'Hi 👋 I\'m the Axiom Synergy Group virtual assistant. How can I help? Pick a topic or type your question.',
+    chatNoMatch:
+      'Sorry, I can\'t answer that yet. Please reach us at axiomsynergygroup@gmail.com or +374 77 684 594.',
+    chatSuggestionsTitle: 'Quick topics',
+    chatSuggestionAbout: 'What is Axiom Synergy Group?',
+    chatSuggestionSolar: 'Solar panels',
+    chatSuggestionHydra: 'Hydra Logic',
+    chatSuggestionLocation: 'Where are you located?',
+    chatSuggestionContact: 'How to contact',
+    chatSuggestionPrice: 'Pricing',
+    chatSuggestionWarranty: 'Warranty',
+    chatAnswerAbout:
+      'Axiom Synergy Group is an Armenian company delivering solar energy systems and Hydra Logic hydraulic / automation solutions for B2B and B2G customers.',
+    chatAnswerSolar:
+      'We design, supply and install solar panel systems — rooftop and ground-mount — including monitoring and maintenance.',
+    chatAnswerHydra:
+      'Hydra Logic is our platform for managing hydraulic and water systems with precision sensing, automation and data analytics.',
+    chatAnswerLocation:
+      'Office: Yerevan, 1 Northern Avenue. Production: Abovyan, industrial zone, 2nd street.',
+    chatAnswerContact:
+      'Reach us at 📧 axiomsynergygroup@gmail.com ☎️ +374 77 684 594 📸 instagram.com/axiom_synergy',
+    chatAnswerPrice:
+      'Pricing depends on project scope. Please send your requirements to axiomsynergygroup@gmail.com and we\'ll prepare a tailored quote.',
+    chatAnswerWarranty:
+      'Equipment comes with the manufacturer\'s warranty; installation work is covered by Axiom\'s service warranty. Contact us for details.',
   },
 }

@@ -614,7 +614,56 @@ button:focus-visible,
 }
 
 .footer-copy {
-  margin: 0;
+  margin: 1rem 0 0;
   font-size: 0.8rem;
   color: #555;
+}
+
+.footer-contacts {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+}
+
+.footer-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #bdbdbd;
+  text-decoration: none;
+  font-size: 0.88rem;
+  line-height: 1;
+  padding: 0.4rem 0.25rem;
+  border-radius: 6px;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.footer-contact:hover,
+.footer-contact:focus-visible {
+  color: #e7c27a;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.footer-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+@media (max-width: 540px) {
+  .footer-contacts {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-contact {
+    font-size: 0.9rem;
+  }
 }

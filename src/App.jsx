@@ -216,16 +216,82 @@ function App() {
           <div className="section-inner narrow">
             <h2 className="section-title">{t.contactTitle}</h2>
             <p className="section-text">{t.contactText}</p>
-            <p className="contact-placeholder">
-              <span className="muted">{t.emailLabel}:</span>{' '}
-              <a href="mailto:info@axiomsynergy.example">info@axiomsynergy.example</a>
-            </p>
           </div>
         </section>
       </main>
 
       <footer className="footer">
         <img src={publicUrl('axiomlogo.PNG')} alt="" className="footer-logo" />
+        <ul className="footer-contacts" aria-label="Contacts">
+          <li>
+            <a
+              href="mailto:axiomsynergygroup@gmail.com"
+              className="footer-contact"
+              aria-label="Email"
+            >
+              <svg
+                className="footer-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+              <span>axiomsynergygroup@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="tel:+37477684594"
+              className="footer-contact"
+              aria-label="Phone"
+            >
+              <svg
+                className="footer-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span>+374 77 684 594</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/axiom_synergy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-contact"
+              aria-label="Instagram"
+            >
+              <svg
+                className="footer-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+              <span>@axiom_synergy</span>
+            </a>
+          </li>
+        </ul>
         <p className="footer-copy">{t.footerRights}</p>
       </footer>
     </div>

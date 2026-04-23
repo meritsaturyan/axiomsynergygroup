@@ -26,15 +26,21 @@ function HydraModelViewer({ src, alt }) {
     const el = mvRef.current
     if (!el || !loadModel) return
 
-    const reframe = () => {
+    const reframe = async () => {
       try {
-        el.setAttribute('bounds', 'tight')
-        el.setAttribute('camera-target', 'auto auto auto')
-        el.setAttribute('camera-orbit', '0deg 90deg auto')
-        el.setAttribute('field-of-view', 'auto')
-        if (typeof el.updateFraming === 'function') el.updateFraming()
+        el.bounds = 'tight'
+        if (typeof el.updateFraming === 'function') {
+          await el.updateFraming()
+        }
+        const { theta, phi } = el.getCameraOrbit?.() ?? { theta: 0, phi: Math.PI / 2 }
+        const radius = el.getCameraOrbit?.()?.radius ?? 1
+        el.cameraTarget = 'auto auto auto'
+        el.cameraOrbit = `${(theta * 180) / Math.PI}deg ${(phi * 180) / Math.PI}deg ${radius * 0.85}m`
+        el.fieldOfView = '30deg'
         if (typeof el.jumpCameraToGoal === 'function') el.jumpCameraToGoal()
-      } catch {}
+      } catch (err) {
+        console.warn('hydra reframe failed', err)
+      }
     }
 
     const onLoad = () => reframe()
@@ -66,7 +72,7 @@ function HydraModelViewer({ src, alt }) {
           exposure="1"
           environment-image="neutral"
           bounds="tight"
-          field-of-view="auto"
+          field-of-view="30deg"
           camera-orbit="0deg 90deg auto"
           camera-target="auto auto auto"
           min-field-of-view="10deg"

@@ -27,10 +27,11 @@ function HydraModelViewer({ src, alt }) {
     if (!el || !loadModel) return
 
     const frameCamera = () => {
+      el.setAttribute('bounds', 'tight')
       el.setAttribute('camera-target', 'auto auto auto')
-      el.setAttribute('field-of-view', '24deg')
-      el.setAttribute('camera-orbit', '0deg 80deg auto')
-      el.setAttribute('min-field-of-view', '12deg')
+      el.setAttribute('camera-orbit', '0deg 90deg auto')
+      el.setAttribute('field-of-view', 'auto')
+      el.setAttribute('min-field-of-view', '10deg')
       el.setAttribute('max-field-of-view', '45deg')
       if (typeof el.updateFraming === 'function') el.updateFraming()
       if (typeof el.resetTurntableRotation === 'function') el.resetTurntableRotation()
@@ -58,8 +59,9 @@ function HydraModelViewer({ src, alt }) {
           shadow-intensity="1"
           exposure="1"
           environment-image="neutral"
-          field-of-view="24deg"
-          camera-orbit="0deg 80deg auto"
+          bounds="tight"
+          field-of-view="auto"
+          camera-orbit="0deg 90deg auto"
           camera-target="auto auto auto"
           className="hydra-model-viewer"
         />

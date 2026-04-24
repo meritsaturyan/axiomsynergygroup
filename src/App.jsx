@@ -116,13 +116,15 @@ function App() {
             </button>
           </div>
         </div>
-        <button
-          type="button"
-          className={`nav-backdrop ${menuOpen ? 'nav-backdrop--visible' : ''}`}
-          aria-hidden={!menuOpen}
-          onClick={() => setMenuOpen(false)}
-        />
       </header>
+
+      <button
+        type="button"
+        className={`nav-backdrop ${menuOpen ? 'nav-backdrop--visible' : ''}`}
+        aria-hidden={!menuOpen}
+        tabIndex={menuOpen ? 0 : -1}
+        onClick={() => setMenuOpen(false)}
+      />
 
       <main>
         <section id="hero" className="hero">

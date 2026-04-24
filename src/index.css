@@ -334,6 +334,13 @@ button:focus-visible,
 .hero {
   background: #000;
   padding: 1.75rem max(1rem, env(safe-area-inset-left)) 2.5rem max(1rem, env(safe-area-inset-right));
+  scroll-margin-top: 84px;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    scroll-margin-top: 72px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -497,6 +504,13 @@ button:focus-visible,
 .section {
   padding: 2.25rem max(1rem, env(safe-area-inset-left)) 2.25rem max(1rem, env(safe-area-inset-right));
   background: #050505;
+  scroll-margin-top: 84px;
+}
+
+@media (max-width: 767px) {
+  .section {
+    scroll-margin-top: 72px;
+  }
 }
 
 @media (min-width: 768px) {

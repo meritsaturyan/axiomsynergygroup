@@ -43,23 +43,18 @@ function App() {
   const t = useMemo(() => translations[lang], [lang])
 
   const scrollTo = (id) => {
-    const el = document.getElementById(id)
-    if (!el) return
-    const wasOpen = menuOpen
+    if (!document.getElementById(id)) return
     setMenuOpen(false)
     const run = () => {
       const target = document.getElementById(id)
       if (!target) return
-      const header = document.querySelector('.header')
-      const headerH = header ? header.getBoundingClientRect().height : 0
-      const top = target.getBoundingClientRect().top + window.scrollY - headerH - 8
-      window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' })
+      try {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } catch {
+        target.scrollIntoView()
+      }
     }
-    if (wasOpen) {
-      setTimeout(run, 260)
-    } else {
-      requestAnimationFrame(run)
-    }
+    setTimeout(run, 320)
   }
 
   return (

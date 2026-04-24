@@ -42,48 +42,43 @@ function App() {
 
   const t = useMemo(() => translations[lang], [lang])
 
-  const scrollTo = (id) => {
-    if (!document.getElementById(id)) return
+  const handleNavClick = (id) => (e) => {
+    const target = document.getElementById(id)
+    if (!target) return
+    e.preventDefault()
     setMenuOpen(false)
-    const run = () => {
-      const target = document.getElementById(id)
-      if (!target) return
-      try {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      } catch {
-        target.scrollIntoView()
-      }
-    }
-    setTimeout(run, 320)
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
   }
 
   return (
     <div className="app">
       <header className="header">
         <div className="header-inner">
-          <button type="button" className="brand" onClick={() => scrollTo('hero')} aria-label="Home">
+          <a href="#hero" className="brand" onClick={handleNavClick('hero')} aria-label="Home">
             <img src={publicUrl('axiomlogo.PNG')} alt="Axiom Synergy Group" className="brand-logo" />
-          </button>
+          </a>
           <nav
             className={`nav ${menuOpen ? 'nav--open' : ''}`}
             id="site-nav"
             aria-label="Main"
           >
-            <button type="button" className="nav-link" onClick={() => scrollTo('about')}>
+            <a href="#about" className="nav-link" onClick={handleNavClick('about')}>
               {t.navAbout}
-            </button>
-            <button type="button" className="nav-link" onClick={() => scrollTo('workshop')}>
+            </a>
+            <a href="#workshop" className="nav-link" onClick={handleNavClick('workshop')}>
               {t.navWorkshop}
-            </button>
-            <button type="button" className="nav-link" onClick={() => scrollTo('solar')}>
+            </a>
+            <a href="#solar" className="nav-link" onClick={handleNavClick('solar')}>
               {t.navSolar}
-            </button>
-            <button type="button" className="nav-link" onClick={() => scrollTo('hydra')}>
+            </a>
+            <a href="#hydra" className="nav-link" onClick={handleNavClick('hydra')}>
               {t.navHydra}
-            </button>
-            <button type="button" className="nav-link" onClick={() => scrollTo('contact')}>
+            </a>
+            <a href="#contact" className="nav-link" onClick={handleNavClick('contact')}>
               {t.navContact}
-            </button>
+            </a>
           </nav>
           <div className="header-trailing">
             <div className="lang" role="group" aria-label="Language">

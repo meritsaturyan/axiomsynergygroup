@@ -45,6 +45,7 @@ a:hover {
 /* Header */
 html {
   scroll-padding-top: 84px;
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 767px) {
@@ -175,6 +176,9 @@ html {
   cursor: pointer;
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .brand-logo {
@@ -209,6 +213,8 @@ html {
   padding: 0.5rem 0.35rem;
   font-family: inherit;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   border-radius: 6px;

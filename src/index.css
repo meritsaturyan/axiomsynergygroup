@@ -43,6 +43,16 @@ a:hover {
 }
 
 /* Header */
+html {
+  scroll-padding-top: 84px;
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+}
+
 .header {
   position: sticky;
   top: 0;

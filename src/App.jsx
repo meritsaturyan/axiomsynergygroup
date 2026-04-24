@@ -47,8 +47,16 @@ function App() {
   const t = useMemo(() => translations[lang], [lang])
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     setMenuOpen(false)
+    const doScroll = () => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const header = document.querySelector('.header')
+      const headerH = header ? header.getBoundingClientRect().height : 0
+      const top = el.getBoundingClientRect().top + window.pageYOffset - headerH - 8
+      window.scrollTo({ top, behavior: 'smooth' })
+    }
+    requestAnimationFrame(() => requestAnimationFrame(doScroll))
   }
 
   return (
